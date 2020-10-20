@@ -304,7 +304,9 @@
                     }
                     break;
                 case "put":
-                    //OVERRIDE JQUERY-A ODRADJEN JE IZNAD SA AJAXOM ZA $.PUT I $.DELETE
+                    //!!!!!!!!!!!!
+                    //OVERRIDE JQUERY-A ODRADJEN JE IZNAD SA AJAXOM ZA $.PUT I $.DELETE NA LINIJAMA 223-240
+                    //!!!!!!!!!!!!!!!!!!!!!!!!!
                     //kod za bonus poene
                     if(tabela == "radio_novosti") {
                         var values2 = {
@@ -316,7 +318,7 @@
                             "kategorija_id": parseInt($("#kategorija_odabir_put").val())
                         };
                         console.log(values);
-                        id_novosti = JSON.stringify(values2);
+                        var id_novosti = $('#id_novosti').val();
                         $.put("http://localhost:8080/rest/rest/novosti/" + id_novosti, JSON.stringify(values),function(data){
                             alert("Odgovor od servera> "+data['poruka']);
                         });
@@ -328,7 +330,7 @@
                             "kategorija": $("input[name = kategorija_naziv_put]").val()
                         };
                         console.log(values)
-                        id_kategorije = JSON.stringify(values2);
+                        var id_kategorije = $('#id_kategorije').val();
                         $.put("http://localhost:8080/rest/rest/kategorije/" + id_kategorije, JSON.stringify(values),function(data){
                             alert("Odgovor od servera> "+data['poruka']);
                         });
@@ -340,7 +342,7 @@
                         var values = {
                             "novost": $("input[name = brisanje]").val()
                         }
-                        var id_novosti = JSON.stringify(values)
+                        var id_novosti = $('#brisanje').val();
                         console.log(values);
                         $.delete("http://localhost:8080/rest/rest/novosti/" + id_novosti, JSON.stringify(values), function(data){
                             alert("Uspjesno obrisana novost")
@@ -349,7 +351,7 @@
                         var values = {
                             "kategorija": $("input[name = brisanje").val()
                         }
-                        var id_kategorije = JSON.stringify(values)
+                        var id_kategorije = $('#brisanje').val();
                         console.log(values);
                         $.delete("http://localhost:8080/rest/rest/kategorije/" + id_kategorije, JSON.stringify(values), function(data){
                             alert("Uspjesno obrisana kategorija")
